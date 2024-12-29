@@ -9,12 +9,7 @@ import {
 } from "@tanstack/react-router";
 
 const TopBarLink = (props: LinkProps) => {
-  return (
-    <Link
-      {...props}
-      style={{ fontFamily: "Lateral Condensed Bold", textDecoration: "none" }}
-    />
-  );
+  return <Link {...props} className="topBarLink" />;
 };
 
 const MainContainer = () => {

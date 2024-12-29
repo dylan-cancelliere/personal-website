@@ -1,0 +1,8 @@
+.topBarLink {
+  font-family: "Lateral Condensed Bold";
+  font-size: xx-large;
+  text-decoration: "none";
+  :visited {
+    color: red;
+  }
+}
