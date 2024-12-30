@@ -1,9 +1,10 @@
 import "./index.css";
-import "src/assets/fonts/Lateral/Lateral.css";
 import "src/assets/fonts/Kumar/Kumar.css";
+import "src/assets/fonts/Noe/Noe.css";
 
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import "@mantine/core/styles.css";
 
 import { routeTree } from "./routeTree.gen";
 import { createRouter, RouterProvider } from "@tanstack/react-router";
@@ -11,7 +12,6 @@ import {
   MantineColorsTuple,
   MantineProvider,
   createTheme,
-  virtualColor,
 } from "@mantine/core";
 
 const router = createRouter({ routeTree });
@@ -38,11 +38,7 @@ const purple: MantineColorsTuple = [
 const theme = createTheme({
   colors: {
     purple,
-    primary: virtualColor({
-      name: "primary",
-      dark: purple[7],
-      light: purple[3],
-    }),
+    primary: purple,
   },
   fontFamily: "Lateral Condensed Bold, monospace",
 });

@@ -21,6 +21,9 @@
     animation-fill-mode: forwards;
   }
 }
+.typewriter::selection {
+  background: #0eb1d2;
+}
 
 /* The typing effect */
 @keyframes typing {
