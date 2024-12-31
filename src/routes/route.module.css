@@ -9,15 +9,15 @@
   color: var(--mantine-color-primary-0);
   &.one {
     animation:
-      typing 2.5s steps(40, end),
-      blink-caret 0.75s step-end 3;
+      typing 1.5s steps(40, end),
+      blink-caret 0.5s step-end 3;
   }
   &.two {
     width: 0;
     animation:
-      typing 2.5s steps(40, end),
-      blink-caret 0.75s step-end infinite;
-    animation-delay: 2.5s;
+      typing 1.5s steps(40, end),
+      blink-caret 0.5s step-end infinite;
+    animation-delay: 1.5s;
     animation-fill-mode: forwards;
   }
 }
@@ -44,12 +44,12 @@
   }
 }
 
-.content {
+.contentAnimation {
   opacity: 0;
   animation: fadeInAnimation ease 1.5s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
-  animation-delay: 4.8s;
+  animation-delay: 3s;
 }
 @keyframes fadeInAnimation {
   0% {

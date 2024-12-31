@@ -66,9 +66,10 @@
 
 .animateHeader {
   opacity: 0;
-  animation: fadeInHeader ease 2s;
+  animation: fadeInHeader ease 1.5s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+  animation-delay: 3s;
 }
 @keyframes fadeInHeader {
   0% {
@@ -84,10 +85,10 @@
 
 .animateFooter {
   opacity: 0;
-  animation: fadeInFooter ease 2s;
+  animation: fadeInFooter ease 1.5s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
-  animation-delay: 6.3s;
+  animation-delay: 3s;
 }
 @keyframes fadeInFooter {
   0% {

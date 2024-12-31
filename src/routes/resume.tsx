@@ -4,7 +4,7 @@ import { createFileRoute } from "@tanstack/react-router";
 const ResumeComponent = () => {
   return (
     <iframe
-      src="public/Cancelliere_Resume.pdf"
+      src="assets/Cancelliere_Resume.pdf"
       style={{
         border: "none",
         height: "100%",
@@ -16,5 +16,8 @@ const ResumeComponent = () => {
 };
 
 export const Route = createFileRoute("/resume")({
+  beforeLoad: () => {
+    return { isInitialLoad: false };
+  },
   component: ResumeComponent,
 });

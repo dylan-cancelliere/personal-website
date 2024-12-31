@@ -5,5 +5,8 @@ const ExperienceContainer = () => {
 };
 
 export const Route = createFileRoute("/experience")({
+  // beforeLoad: () => {
+  //   return { isInitialLoad: false };
+  // },
   component: ExperienceContainer,
 });

@@ -64,7 +64,7 @@ const AboutContainer = () => {
           </Text>
         </Stack>
         <Image
-          src="public/profile.jpeg"
+          src="assets/profile.jpeg"
           maw={isMobile ? rem(200) : rem(300)}
           my="5rem"
           style={{
@@ -124,7 +124,7 @@ const LandingPage = () => {
           </Title>
         </Stack>
       </Stack>
-      <Box className={classes.content}>
+      <Box className={classes.contentAnimation}>
         <AboutContainer />
         <SpotifyContainer />
       </Box>
