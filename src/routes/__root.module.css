@@ -7,11 +7,27 @@
   width: 100%;
 }
 
+.mobileHeader {
+  transition:
+    height 0.7s ease,
+    width 0.7s ease;
+  height: 86px;
+}
+
+.mobileHeader.expand {
+  width: 100%;
+  height: calc(100vh - (var(--mantine-spacing-md) * 2));
+  overflow: hidden;
+}
+
 .topBarLink {
   font-family: Noe Bold;
   font-size: xx-large;
   text-decoration: none;
-  color: var(--mantine-color-purple-0);
+  color: var(--mantine-color-primary-0);
+  &[data-status="active"] {
+    text-decoration: underline solid var(--mantine-color-primary-0);
+  }
 }
 
 /* Credit: Mikael Ainalem https://mikael-ainalem.medium.com/ */

@@ -1,6 +1,13 @@
 import classes from "./__root.module.css";
 
-import { ActionIcon, Group, rem, Stack, useMantineTheme } from "@mantine/core";
+import {
+  ActionIcon,
+  Box,
+  Group,
+  rem,
+  Stack,
+  useMantineTheme,
+} from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import {
   IconMail,
@@ -15,6 +22,9 @@ import {
   LinkComponentProps,
   Outlet,
 } from "@tanstack/react-router";
+import { useContext, useState } from "react";
+import { AppContext } from "../AppContext";
+import { useIsMobile } from "../utils";
 
 const TopBarLink = (props: LinkComponentProps) => {
   return <Link {...props} className={classes.topBarLink} />;
@@ -52,6 +62,7 @@ const HamburgerIcon = ({
 
 const ContactContainer = () => {
   const theme = useMantineTheme();
+  const appContext = useContext(AppContext);
 
   return (
     <Group
@@ -59,14 +70,18 @@ const ContactContainer = () => {
       p="xl"
       justify="center"
       style={{ backgroundColor: theme.colors.primary[9], borderRadius: rem(5) }}
-      className={window.location.pathname == "/" ? classes.animateFooter : ""}
+      className={
+        window.location.pathname == "/" && appContext.isInitialLoad
+          ? classes.animateFooter
+          : ""
+      }
     >
       <ActionIcon
         variant="transparent"
         size="xl"
         color={theme.colors.primary[0]}
         component="a"
-        href="mailto:dylancancelliere@gmail.com"
+        href="mailto:dycancel@gmail.com"
       >
         <IconMail height="100%" width="100%" />
       </ActionIcon>
@@ -114,9 +129,91 @@ const ContactContainer = () => {
   );
 };
 
-const MainContainer = () => {
-  const theme = useMantineTheme();
+const TopBar = ({
+  setIsInitialLoad,
+}: {
+  setIsInitialLoad: (isInitialLoad: boolean) => void;
+}) => {
   const [opened, { toggle }] = useDisclosure();
+  const appContext = useContext(AppContext);
+
+  const theme = useMantineTheme();
+  const isMobile = useIsMobile();
+
+  return (
+    <Stack
+      w="100%"
+      justify="flex-start"
+      className={
+        window.location.pathname == "/" && appContext.isInitialLoad
+          ? classes.animateHeader
+          : ""
+      }
+    >
+      <Group
+        className={`${classes.topBar} ${isMobile ? classes.mobileHeader : ""} ${opened ? classes.expand : ""}`}
+        p="xs"
+        wrap="nowrap"
+        style={{
+          border: `0.5rem solid ${theme.colors.primary[0]}`,
+          boxShadow: "rgba(0, 0, 0, 0.15) 0 0.5rem 0.5rem",
+        }}
+        gap="xl"
+      >
+        <ActionIcon
+          size="xl"
+          variant="transparent"
+          color={theme.colors.primary[0]}
+          onClick={toggle}
+        >
+          <HamburgerIcon opened={opened} color={theme.colors.primary[0]} />
+        </ActionIcon>
+        <Box
+          style={{
+            display: "flex",
+            gap: "var(--mantine-spacing-xl)",
+            ...(isMobile
+              ? {
+                  flexGrow: 1,
+                  flexDirection: "column",
+                  alignItems: "center",
+                }
+              : undefined),
+          }}
+        >
+          <TopBarLink
+            to="/"
+            tabIndex={opened ? undefined : -1}
+            onClick={() => setIsInitialLoad(false)}
+          >
+            About
+          </TopBarLink>
+          <TopBarLink
+            to="/experience"
+            tabIndex={opened ? undefined : -1}
+            onClick={() => setIsInitialLoad(false)}
+          >
+            Experience
+          </TopBarLink>
+          <TopBarLink
+            to="/resume"
+            tabIndex={opened ? undefined : -1}
+            onClick={() => setIsInitialLoad(false)}
+          >
+            Resume
+          </TopBarLink>
+        </Box>
+      </Group>
+    </Stack>
+  );
+};
+
+const MainContainer = ({
+  setIsInitialLoad,
+}: {
+  setIsInitialLoad: (isInitialLoad: boolean) => void;
+}) => {
+  const theme = useMantineTheme();
 
   return (
     <>
@@ -125,44 +222,10 @@ const MainContainer = () => {
         w="100dvw"
         p="sm"
         align="center"
+        justify="space-between"
         style={{ backgroundColor: theme.colors.primary[4], overflow: "auto" }}
       >
-        <Stack
-          w="100%"
-          justify="flex-start"
-          className={
-            window.location.pathname == "/" ? classes.animateHeader : ""
-          }
-        >
-          <Group
-            className={`${classes.topBar} ${opened ? classes.expand : ""}`}
-            p="xs"
-            wrap="nowrap"
-            style={{
-              border: `0.5rem solid ${theme.colors.primary[0]}`,
-              boxShadow: "rgba(0, 0, 0, 0.15) 0 0.5rem 0.5rem",
-            }}
-            gap="xl"
-          >
-            <ActionIcon
-              size="xl"
-              variant="transparent"
-              color={theme.colors.primary[0]}
-              onClick={toggle}
-            >
-              <HamburgerIcon opened={opened} color={theme.colors.primary[0]} />
-            </ActionIcon>
-            <TopBarLink to="/" tabIndex={opened ? undefined : -1}>
-              About
-            </TopBarLink>
-            <TopBarLink to="/experience" tabIndex={opened ? undefined : -1}>
-              Experience
-            </TopBarLink>
-            <TopBarLink to="/resume" tabIndex={opened ? undefined : -1}>
-              Resume
-            </TopBarLink>
-          </Group>
-        </Stack>
+        <TopBar setIsInitialLoad={setIsInitialLoad} />
         <Outlet />
         <ContactContainer />
       </Stack>
@@ -170,6 +233,17 @@ const MainContainer = () => {
   );
 };
 
+const ContextWrapper = () => {
+  const [isInitialLoad, setIsInitialLoad] = useState(
+    window.location.pathname == "/"
+  );
+  return (
+    <AppContext.Provider value={{ isInitialLoad: isInitialLoad }}>
+      <MainContainer setIsInitialLoad={setIsInitialLoad} />
+    </AppContext.Provider>
+  );
+};
+
 export const Route = createRootRoute({
-  component: MainContainer,
+  component: ContextWrapper,
 });

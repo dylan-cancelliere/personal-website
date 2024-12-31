@@ -13,7 +13,8 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { useIsMobile } from "../utils";
-import { ReactNode } from "react";
+import { ReactNode, useContext } from "react";
+import { AppContext } from "../AppContext";
 
 const InlineLink = ({
   children,
@@ -66,7 +67,7 @@ const AboutContainer = () => {
         <Image
           src="/profile.jpeg"
           maw={isMobile ? rem(200) : rem(300)}
-          my="5rem"
+          my="xl"
           style={{
             boxShadow: `-50px -50px 0 -40px ${theme.colors.primary[0]}, 50px 50px 0 -40px ${theme.colors.primary[0]}`,
           }}
@@ -80,7 +81,7 @@ const SpotifyContainer = () => {
   const theme = useMantineTheme();
 
   return (
-    <Stack w="100%" style={{}} p="md" align="center">
+    <Stack w="100%" py="xl" align="center">
       <Group w="100%" justify="center" gap="xl">
         <Stack>
           <Title
@@ -112,9 +113,11 @@ const SpotifyContainer = () => {
 };
 
 const LandingPage = () => {
+  const appContext = useContext(AppContext);
+
   return (
     <Stack w="100%" gap="xl">
-      <Stack pt="5rem" w="100%" align="center">
+      <Stack pt="xl" w="100%" align="center">
         <Stack w="min-content" justify="flex-end" id="about">
           <Title className={`${classes.typewriter} ${classes.one}`}>
             Dylan Cancelliere
@@ -124,7 +127,11 @@ const LandingPage = () => {
           </Title>
         </Stack>
       </Stack>
-      <Box className={classes.contentAnimation}>
+      <Box
+        className={
+          appContext.isInitialLoad ? classes.contentAnimation : undefined
+        }
+      >
         <AboutContainer />
         <SpotifyContainer />
       </Box>
