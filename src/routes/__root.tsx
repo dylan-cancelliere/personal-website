@@ -52,6 +52,7 @@ const HamburgerIcon = ({
 
 const ContactContainer = () => {
   const theme = useMantineTheme();
+  const showAnimation = window.location.pathname == "/";
 
   return (
     <Group
@@ -59,6 +60,7 @@ const ContactContainer = () => {
       p="xl"
       justify="center"
       style={{ backgroundColor: theme.colors.primary[9], borderRadius: rem(5) }}
+      className={showAnimation ? classes.animateFooter : ""}
     >
       <ActionIcon
         variant="transparent"
@@ -116,6 +118,7 @@ const ContactContainer = () => {
 const MainContainer = () => {
   const theme = useMantineTheme();
   const [opened, { toggle }] = useDisclosure();
+  const showAnimation = window.location.pathname == "/";
 
   return (
     <>
@@ -126,7 +129,11 @@ const MainContainer = () => {
         align="center"
         style={{ backgroundColor: theme.colors.primary[4], overflow: "auto" }}
       >
-        <Stack w="100%" justify="flex-start">
+        <Stack
+          w="100%"
+          justify="flex-start"
+          className={showAnimation ? classes.animateHeader : ""}
+        >
           <Group
             className={`${classes.topBar} ${opened ? classes.expand : ""}`}
             p="xs"

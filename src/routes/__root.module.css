@@ -63,3 +63,40 @@
 .ham8.active .bottom {
   stroke-dashoffset: -64px;
 }
+
+.animateHeader {
+  opacity: 0;
+  animation: fadeInHeader ease 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeInHeader {
+  0% {
+    opacity: 0;
+    translate: 0 -50vh;
+  }
+
+  100% {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+.animateFooter {
+  opacity: 0;
+  animation: fadeInFooter ease 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-delay: 6.3s;
+}
+@keyframes fadeInFooter {
+  0% {
+    opacity: 0;
+    translate: 0 50vh;
+  }
+
+  100% {
+    opacity: 1;
+    translate: 0 0;
+  }
+}

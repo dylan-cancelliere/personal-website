@@ -2,6 +2,7 @@ import classes from "./route.module.css";
 
 import { createFileRoute } from "@tanstack/react-router";
 import {
+  Box,
   em,
   Group,
   Image,
@@ -123,8 +124,10 @@ const LandingPage = () => {
           </Title>
         </Stack>
       </Stack>
-      <AboutContainer />
-      <SpotifyContainer />
+      <Box className={classes.content}>
+        <AboutContainer />
+        <SpotifyContainer />
+      </Box>
     </Stack>
   );
 };

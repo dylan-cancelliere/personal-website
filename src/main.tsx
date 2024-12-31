@@ -1,6 +1,6 @@
 import "./index.css";
-import "src/assets/fonts/Kumar/Kumar.css";
-import "src/assets/fonts/Noe/Noe.css";
+import "public/fonts/Kumar/Kumar.css";
+import "public/fonts/Noe/Noe.css";
 
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";

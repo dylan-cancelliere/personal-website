@@ -3,9 +3,8 @@ import { createFileRoute } from "@tanstack/react-router";
 
 const ResumeComponent = () => {
   return (
-    // <Stack>
     <iframe
-      src="src/assets/Cancelliere_Resume.pdf"
+      src="public/Cancelliere_Resume.pdf"
       style={{
         border: "none",
         height: "100%",
@@ -13,7 +12,6 @@ const ResumeComponent = () => {
         maxWidth: rem(1000),
       }}
     />
-    // {/* </Stack> */}
   );
 };
 

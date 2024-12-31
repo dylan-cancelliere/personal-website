@@ -1,7 +1,7 @@
 .typewriter {
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: 0.15em solid transparent; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
+  overflow: hidden;
+  border-right: 0.15em solid transparent;
+  white-space: nowrap;
   margin: 0 0 0 auto;
   letter-spacing: 0.1em;
   font-family: Kumar;
@@ -25,7 +25,6 @@
   background: #0eb1d2;
 }
 
-/* The typing effect */
 @keyframes typing {
   from {
     width: 0;
@@ -35,7 +34,6 @@
   }
 }
 
-/* The typewriter cursor effect */
 @keyframes blink-caret {
   from,
   to {
@@ -46,11 +44,28 @@
   }
 }
 
+.content {
+  opacity: 0;
+  animation: fadeInAnimation ease 1.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-delay: 4.8s;
+}
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+    translate: 0 50vh;
+  }
+
+  100% {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
 .inlineLink {
   color: var(--mantine-color-text);
   text-decoration-color: var(--mantine-color-primary-7);
-  /* font-weight: 700; */
-  /* padding: 0 1px 1px 1px; */
 }
 
 .inlineLink:hover {
