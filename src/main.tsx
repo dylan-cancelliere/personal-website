@@ -1,6 +1,4 @@
 import "./index.css";
-import "assets/fonts/Kumar/Kumar.css";
-import "assets/fonts/Noe/Noe.css";
 
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
@@ -40,7 +38,7 @@ const theme = createTheme({
     purple,
     primary: purple,
   },
-  fontFamily: "Lateral Condensed Bold, monospace",
+  fontFamily: "monospace",
 });
 
 const rootElement = document.getElementById("root")!;

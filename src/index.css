@@ -1,3 +1,38 @@
+@font-face {
+  font-family: "Kumar";
+  src: url("/fonts/Kumar/KumarOne.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noe";
+  src: url("/fonts/Noe/noe.ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noe Italic";
+  src: url("/fonts/Noe/noe-italic.ttf");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Noe Bold";
+  src: url("/fonts/Noe/noe-bold.otf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noe Bold Italic";
+  src: url("/fonts/Noe/noe-bold-italic.ttf");
+  font-weight: 700;
+  font-style: italic;
+}
+
 body {
   scroll-behavior: smooth;
 }
