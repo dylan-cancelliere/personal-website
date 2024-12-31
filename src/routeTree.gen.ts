@@ -11,9 +11,23 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as ResumeImport } from './routes/resume'
+import { Route as ExperienceImport } from './routes/experience'
 import { Route as RouteImport } from './routes/route'
 
 // Create/Update Routes
+
+const ResumeRoute = ResumeImport.update({
+  id: '/resume',
+  path: '/resume',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ExperienceRoute = ExperienceImport.update({
+  id: '/experience',
+  path: '/experience',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const RouteRoute = RouteImport.update({
   id: '/',
@@ -32,6 +46,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RouteImport
       parentRoute: typeof rootRoute
     }
+    '/experience': {
+      id: '/experience'
+      path: '/experience'
+      fullPath: '/experience'
+      preLoaderRoute: typeof ExperienceImport
+      parentRoute: typeof rootRoute
+    }
+    '/resume': {
+      id: '/resume'
+      path: '/resume'
+      fullPath: '/resume'
+      preLoaderRoute: typeof ResumeImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -39,32 +67,42 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof RouteRoute
+  '/experience': typeof ExperienceRoute
+  '/resume': typeof ResumeRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof RouteRoute
+  '/experience': typeof ExperienceRoute
+  '/resume': typeof ResumeRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof RouteRoute
+  '/experience': typeof ExperienceRoute
+  '/resume': typeof ResumeRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/experience' | '/resume'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/experience' | '/resume'
+  id: '__root__' | '/' | '/experience' | '/resume'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   RouteRoute: typeof RouteRoute
+  ExperienceRoute: typeof ExperienceRoute
+  ResumeRoute: typeof ResumeRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   RouteRoute: RouteRoute,
+  ExperienceRoute: ExperienceRoute,
+  ResumeRoute: ResumeRoute,
 }
 
 export const routeTree = rootRoute
@@ -77,11 +115,19 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/experience",
+        "/resume"
       ]
     },
     "/": {
       "filePath": "route.tsx"
+    },
+    "/experience": {
+      "filePath": "experience.tsx"
+    },
+    "/resume": {
+      "filePath": "resume.tsx"
     }
   }
 }

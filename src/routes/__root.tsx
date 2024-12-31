@@ -1,16 +1,22 @@
 import classes from "./__root.module.css";
 
-import { ActionIcon, Box, Group, Stack, useMantineTheme } from "@mantine/core";
+import { ActionIcon, Group, rem, Stack, useMantineTheme } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import {
+  IconMail,
+  IconBrandLinkedin,
+  IconBrandSpotify,
+  IconBrandLastfm,
+  IconBrandGithub,
+} from "@tabler/icons-react";
 import {
   createRootRoute,
   Link,
-  LinkProps,
+  LinkComponentProps,
   Outlet,
 } from "@tanstack/react-router";
-import { useIsMobile } from "../utils";
 
-const TopBarLink = (props: LinkProps) => {
+const TopBarLink = (props: LinkComponentProps) => {
   return <Link {...props} className={classes.topBarLink} />;
 };
 
@@ -44,6 +50,69 @@ const HamburgerIcon = ({
   </svg>
 );
 
+const ContactContainer = () => {
+  const theme = useMantineTheme();
+
+  return (
+    <Group
+      w="100%"
+      p="xl"
+      justify="center"
+      style={{ backgroundColor: theme.colors.primary[9], borderRadius: rem(5) }}
+    >
+      <ActionIcon
+        variant="transparent"
+        size="xl"
+        color={theme.colors.primary[0]}
+        component="a"
+        href="mailto:dylancancelliere@gmail.com"
+      >
+        <IconMail height="100%" width="100%" />
+      </ActionIcon>
+      <ActionIcon
+        variant="transparent"
+        size="xl"
+        color={theme.colors.primary[0]}
+        component="a"
+        href="https://www.linkedin.com/in/dylan-cancelliere/"
+        target="_blank"
+      >
+        <IconBrandLinkedin height="100%" width="100%" />
+      </ActionIcon>
+      <ActionIcon
+        variant="transparent"
+        size="xl"
+        color={theme.colors.primary[0]}
+        component="a"
+        href="https://github.com/dylan-cancelliere"
+        target="_blank"
+      >
+        <IconBrandGithub height="100%" width="100%" />
+      </ActionIcon>
+      <ActionIcon
+        variant="transparent"
+        size="xl"
+        color={theme.colors.primary[0]}
+        component="a"
+        href="https://open.spotify.com/user/dcancelliere?si=d7e65ae1caec4103"
+        target="_blank"
+      >
+        <IconBrandSpotify height="100%" width="100%" />
+      </ActionIcon>
+      <ActionIcon
+        variant="transparent"
+        size="xl"
+        color={theme.colors.primary[0]}
+        component="a"
+        href="https://www.last.fm/user/KillerDiller7"
+        target="_blank"
+      >
+        <IconBrandLastfm height="100%" width="100%" />
+      </ActionIcon>
+    </Group>
+  );
+};
+
 const MainContainer = () => {
   const theme = useMantineTheme();
   const [opened, { toggle }] = useDisclosure();
@@ -55,7 +124,7 @@ const MainContainer = () => {
         w="100dvw"
         p="sm"
         align="center"
-        style={{ backgroundColor: theme.colors.primary[4] }}
+        style={{ backgroundColor: theme.colors.primary[4], overflow: "auto" }}
       >
         <Stack w="100%" justify="flex-start">
           <Group
@@ -66,6 +135,7 @@ const MainContainer = () => {
               border: `0.5rem solid ${theme.colors.primary[0]}`,
               boxShadow: "rgba(0, 0, 0, 0.15) 0 0.5rem 0.5rem",
             }}
+            gap="xl"
           >
             <ActionIcon
               size="xl"
@@ -75,11 +145,19 @@ const MainContainer = () => {
             >
               <HamburgerIcon opened={opened} color={theme.colors.primary[0]} />
             </ActionIcon>
-
-            <TopBarLink to="/">Home</TopBarLink>
+            <TopBarLink to="/" tabIndex={opened ? undefined : -1}>
+              About
+            </TopBarLink>
+            <TopBarLink to="/experience" tabIndex={opened ? undefined : -1}>
+              Experience
+            </TopBarLink>
+            <TopBarLink to="/resume" tabIndex={opened ? undefined : -1}>
+              Resume
+            </TopBarLink>
           </Group>
         </Stack>
         <Outlet />
+        <ContactContainer />
       </Stack>
     </>
   );

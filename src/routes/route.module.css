@@ -6,7 +6,7 @@
   letter-spacing: 0.1em;
   font-family: Kumar;
   font-size: 6vw;
-  color: #f5f1fe;
+  color: var(--mantine-color-primary-0);
   &.one {
     animation:
       typing 2.5s steps(40, end),
@@ -44,4 +44,17 @@
   50% {
     border-color: #0eb1d2;
   }
+}
+
+.inlineLink {
+  color: var(--mantine-color-text);
+  text-decoration-color: var(--mantine-color-primary-7);
+  /* font-weight: 700; */
+  /* padding: 0 1px 1px 1px; */
+}
+
+.inlineLink:hover {
+  background-color: var(--mantine-color-primary-7);
+  border-radius: 5px;
+  text-decoration: none;
 }
