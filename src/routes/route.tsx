@@ -65,7 +65,7 @@ const AboutContainer = () => {
           </Text>
         </Stack>
         <Image
-          src="/profile.jpeg"
+          src="/assets/profile.jpeg"
           maw={isMobile ? rem(200) : rem(300)}
           my="xl"
           style={{
