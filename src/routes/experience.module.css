@@ -1,0 +1,41 @@
+p {
+  text-indent: 20px;
+}
+
+:root {
+  --card-spacing: 3.5rem;
+}
+
+.line {
+  position: relative;
+}
+
+.bottomLine::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  bottom: calc(-1 * var(--card-spacing));
+  left: 50%;
+  border-right: 0.15rem solid var(--mantine-color-primary-0);
+  z-index: 1;
+}
+
+.topLine::before {
+  content: "";
+  position: absolute;
+  bottom: 50%;
+  top: calc(-1 * var(--card-spacing));
+  left: 50%;
+  border-right: 0.15rem solid var(--mantine-color-primary-0);
+  z-index: 1;
+}
+
+.middleLine::after {
+  content: "";
+  position: absolute;
+  top: calc(-1 * var(--card-spacing));
+  bottom: calc(-1 * var(--card-spacing));
+  left: 50%;
+  border-right: 0.15rem solid var(--mantine-color-primary-0);
+  z-index: 1;
+}

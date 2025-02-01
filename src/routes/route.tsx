@@ -65,7 +65,7 @@ const AboutContainer = () => {
           </Text>
         </Stack>
         <Image
-          src="/profile.jpeg"
+          src="/assets/profile.jpeg"
           maw={isMobile ? rem(200) : rem(300)}
           my="xl"
           style={{
@@ -102,7 +102,7 @@ const SpotifyContainer = () => {
             maxWidth: rem(700),
             flexGrow: 1,
           }}
-          src="https://open.spotify.com/embed/playlist/4LhCYDqNdNqxJGaz071cfA?utm_source=generator"
+          src="https://open.spotify.com/embed/playlist/2dTJrxJ6UtCklIHWXRZzjg?utm_source=generator"
           height="352"
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"

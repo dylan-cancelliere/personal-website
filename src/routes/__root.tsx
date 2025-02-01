@@ -134,7 +134,7 @@ const TopBar = ({
 }: {
   setIsInitialLoad: (isInitialLoad: boolean) => void;
 }) => {
-  const [opened, { toggle }] = useDisclosure();
+  const [opened, { toggle, close }] = useDisclosure();
   const appContext = useContext(AppContext);
 
   const theme = useMantineTheme();
@@ -184,21 +184,30 @@ const TopBar = ({
           <TopBarLink
             to="/"
             tabIndex={opened ? undefined : -1}
-            onClick={() => setIsInitialLoad(false)}
+            onClick={() => {
+              setIsInitialLoad(false);
+              if (isMobile) close();
+            }}
           >
             About
           </TopBarLink>
           <TopBarLink
             to="/experience"
             tabIndex={opened ? undefined : -1}
-            onClick={() => setIsInitialLoad(false)}
+            onClick={() => {
+              setIsInitialLoad(false);
+              if (isMobile) close();
+            }}
           >
             Experience
           </TopBarLink>
           <TopBarLink
             to="/resume"
             tabIndex={opened ? undefined : -1}
-            onClick={() => setIsInitialLoad(false)}
+            onClick={() => {
+              if (isMobile) close();
+              setIsInitialLoad(false);
+            }}
           >
             Resume
           </TopBarLink>

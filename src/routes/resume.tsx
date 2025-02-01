@@ -4,7 +4,7 @@ import { createFileRoute } from "@tanstack/react-router";
 const ResumeComponent = () => {
   return (
     <iframe
-      src="/Cancelliere_Resume.pdf"
+      src="/assets/Cancelliere_Resume.pdf"
       style={{
         border: "none",
         height: "100%",
