@@ -1,23 +1,8 @@
-import { rem } from "@mantine/core";
-import { createFileRoute } from "@tanstack/react-router";
-
-const ResumeComponent = () => {
-  return (
-    <iframe
-      src="/assets/Cancelliere_Resume.pdf"
-      style={{
-        border: "none",
-        height: "100%",
-        width: "100%",
-        maxWidth: rem(1000),
-      }}
-    />
-  );
-};
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/resume")({
   beforeLoad: () => {
-    return { isInitialLoad: false };
+    window.open("/assets/Cancelliere_Resume.pdf");
+    throw redirect({ to: "/" });
   },
-  component: ResumeComponent,
 });

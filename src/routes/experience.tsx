@@ -25,6 +25,7 @@ import {
   HubSpot2BodyText,
   MfjBodyText,
 } from "../ExperienceText";
+import { useIsMobile } from "../utils";
 
 const Icon = ({ src }: { src: string }) => {
   return (
@@ -101,19 +102,66 @@ const EventCard = ({ title, body, role, link, skills }: EventCardProps) => {
   );
 };
 
+type TimelineEventProps = {
+  position: "left" | "right";
+  line?: "top" | "bottom";
+  date: string;
+  icon: ReactNode;
+  cardProps: EventCardProps;
+};
+
+const TimelineEvent = (props: TimelineEventProps) => {
+  const isMobile = useIsMobile();
+
+  return isMobile ? (
+    <MobileTimeLineEvent {...props} />
+  ) : (
+    <DesktopTimelineEvent {...props} />
+  );
+};
+
+const MobileTimeLineEvent = ({ date, icon, cardProps }: TimelineEventProps) => {
+  const theme = useMantineTheme();
+
+  const dateWrapper = (
+    <Title order={2} ff="Noe Bold Italic" c={theme.colors.primary[0]}>
+      {date}
+    </Title>
+  );
+
+  return (
+    <Stack py="lg">
+      <Box>
+        <Group
+          w="100%"
+          justify="flex-end"
+          style={{
+            flexGrow: 1,
+            textAlign: "right",
+          }}
+        >
+          {dateWrapper}
+          <Box h="100%" w="max-content" style={{ flexShrink: 0 }}>
+            {icon}
+          </Box>
+        </Group>
+      </Box>
+      <Group>
+        <Box w="100%" style={{ flexGrow: 1 }}>
+          <EventCard {...cardProps} />
+        </Box>
+      </Group>
+    </Stack>
+  );
+};
+
 const DesktopTimelineEvent = ({
   position,
   line,
   date,
   icon,
   cardProps,
-}: {
-  position: "left" | "right";
-  line?: "top" | "bottom";
-  date: string;
-  icon: ReactNode;
-  cardProps: EventCardProps;
-}) => {
+}: TimelineEventProps) => {
   const theme = useMantineTheme();
 
   const dateWrapper = (
@@ -163,7 +211,7 @@ const DesktopTimelineEvent = ({
 const ExperienceContainer = () => {
   return (
     <Stack w="100%" gap={0} pt="xl">
-      <DesktopTimelineEvent
+      <TimelineEvent
         position="left"
         line="top"
         date="June 2024 - Current"
@@ -181,7 +229,7 @@ const ExperienceContainer = () => {
           body: BryxBodyText,
         }}
       />
-      <DesktopTimelineEvent
+      <TimelineEvent
         position="right"
         date="May 2024"
         icon={<Icon src="/assets/rit.svg" />}
@@ -190,7 +238,7 @@ const ExperienceContainer = () => {
           skills: [],
         }}
       />
-      <DesktopTimelineEvent
+      <TimelineEvent
         position="left"
         date="May 2023 - May 2024"
         icon={<Icon src="/assets/mfj.jpeg" />}
@@ -207,7 +255,7 @@ const ExperienceContainer = () => {
           body: MfjBodyText,
         }}
       />
-      <DesktopTimelineEvent
+      <TimelineEvent
         position="right"
         date="Sep 2022 - Dec 2022"
         icon={<Icon src="/assets/aws.png" />}
@@ -223,7 +271,7 @@ const ExperienceContainer = () => {
           body: AwsBodyText,
         }}
       />
-      <DesktopTimelineEvent
+      <TimelineEvent
         position="left"
         date="Jun 2022 - Aug 2022"
         icon={<Icon src="/assets/hubspot.jpeg" />}
@@ -238,7 +286,7 @@ const ExperienceContainer = () => {
           body: HubSpot2BodyText,
         }}
       />
-      <DesktopTimelineEvent
+      <TimelineEvent
         position="right"
         date="Jan 2022 - May 2022"
         icon={<Icon src="/assets/bryx.png" />}
@@ -254,7 +302,7 @@ const ExperienceContainer = () => {
           body: BryxInternshipBodyText,
         }}
       />
-      <DesktopTimelineEvent
+      <TimelineEvent
         position="left"
         date="Jan 2021 - Aug 2021"
         icon={<Icon src="/assets/hubspot.jpeg" />}
@@ -269,19 +317,19 @@ const ExperienceContainer = () => {
           body: HubSpot1BodyText,
         }}
       />
-      <DesktopTimelineEvent
+      <TimelineEvent
         position="right"
         date="June 2020 - Aug 2020"
         icon={<Icon src="/assets/constantcontact.png" />}
         cardProps={{
           title: "Constant Contact",
-          role: "Full-Stack Intern",
+          role: "Front-End Intern",
           link: "https://www.constantcontact.com/",
           skills: [{ label: "React", color: "green" }],
           body: ConstantContactBodyText,
         }}
       />
-      <DesktopTimelineEvent
+      <TimelineEvent
         position="left"
         line="bottom"
         date="August 2019"
@@ -298,4 +346,3 @@ const ExperienceContainer = () => {
 export const Route = createFileRoute("/experience")({
   component: ExperienceContainer,
 });
-
