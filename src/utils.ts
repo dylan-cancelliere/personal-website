@@ -7,16 +7,16 @@ export function useIsMobile() {
 
   useEffect(() => {
     const mql = window.matchMedia(
-      `(max-width: calc(${theme.breakpoints.sm} - ${em(1)}))`
+      `(max-width: calc(${theme.breakpoints.sm} - ${em(1)}))`,
     );
     const onChange = () => {
       setIsMobile(
-        window.innerWidth < parseInt(px(theme.breakpoints.sm).toString())
+        window.innerWidth < parseInt(px(theme.breakpoints.sm).toString()),
       );
     };
     mql.addEventListener("change", onChange);
     setIsMobile(
-      window.innerWidth < parseInt(px(theme.breakpoints.sm).toString())
+      window.innerWidth < parseInt(px(theme.breakpoints.sm).toString()),
     );
     return () => mql.removeEventListener("change", onChange);
   }, [theme.breakpoints.sm]);

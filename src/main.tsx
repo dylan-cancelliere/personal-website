@@ -49,6 +49,6 @@ if (!rootElement.innerHTML) {
       <MantineProvider theme={theme}>
         <RouterProvider router={router} />
       </MantineProvider>
-    </StrictMode>
+    </StrictMode>,
   );
 }

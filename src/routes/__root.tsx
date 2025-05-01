@@ -244,7 +244,7 @@ const MainContainer = ({
 
 const ContextWrapper = () => {
   const [isInitialLoad, setIsInitialLoad] = useState(
-    window.location.pathname == "/"
+    window.location.pathname == "/",
   );
   return (
     <AppContext.Provider value={{ isInitialLoad: isInitialLoad }}>
