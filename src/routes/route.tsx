@@ -102,7 +102,7 @@ const SpotifyContainer = () => {
             maxWidth: rem(700),
             flexGrow: 1,
           }}
-          src="https://open.spotify.com/embed/playlist/5GK9IhPCcWFN4iT19Ou71W?utm_source=generator"
+          src="https://open.spotify.com/embed/playlist/622DTZgJgCHl2PTWKYAVUZ?utm_source=generator"
           height="352"
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
