@@ -1,4 +1,4 @@
-import classes from "./route.module.css";
+import classes from "./index.module.css";
 
 import { createFileRoute } from "@tanstack/react-router";
 import {
