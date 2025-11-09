@@ -15,7 +15,7 @@ import {
 import { useIsMobile } from "../utils";
 import { ReactNode, useContext } from "react";
 import { AppContext } from "../AppContext";
-import { SpotifyEmbed } from "../SpotifyEmbed";
+// import { SpotifyEmbed } from "../SpotifyEmbed";
 
 const InlineLink = ({
   children,
