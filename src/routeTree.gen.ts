@@ -10,104 +10,104 @@
 
 // Import Routes
 
-import { Route as rootRoute } from "./routes/__root";
-import { Route as ResumeImport } from "./routes/resume";
-import { Route as ExperienceImport } from "./routes/experience";
-import { Route as RouteImport } from "./routes/route";
+import { Route as rootRoute } from './routes/__root'
+import { Route as ResumeImport } from './routes/resume'
+import { Route as ExperienceImport } from './routes/experience'
+import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
 
 const ResumeRoute = ResumeImport.update({
-  id: "/resume",
-  path: "/resume",
+  id: '/resume',
+  path: '/resume',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const ExperienceRoute = ExperienceImport.update({
-  id: "/experience",
-  path: "/experience",
+  id: '/experience',
+  path: '/experience',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
-const RouteRoute = RouteImport.update({
-  id: "/",
-  path: "/",
+const IndexRoute = IndexImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 // Populate the FileRoutesByPath interface
 
-declare module "@tanstack/react-router" {
+declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    "/": {
-      id: "/";
-      path: "/";
-      fullPath: "/";
-      preLoaderRoute: typeof RouteImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/experience": {
-      id: "/experience";
-      path: "/experience";
-      fullPath: "/experience";
-      preLoaderRoute: typeof ExperienceImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/resume": {
-      id: "/resume";
-      path: "/resume";
-      fullPath: "/resume";
-      preLoaderRoute: typeof ResumeImport;
-      parentRoute: typeof rootRoute;
-    };
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/experience': {
+      id: '/experience'
+      path: '/experience'
+      fullPath: '/experience'
+      preLoaderRoute: typeof ExperienceImport
+      parentRoute: typeof rootRoute
+    }
+    '/resume': {
+      id: '/resume'
+      path: '/resume'
+      fullPath: '/resume'
+      preLoaderRoute: typeof ResumeImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
-  "/": typeof RouteRoute;
-  "/experience": typeof ExperienceRoute;
-  "/resume": typeof ResumeRoute;
+  '/': typeof IndexRoute
+  '/experience': typeof ExperienceRoute
+  '/resume': typeof ResumeRoute
 }
 
 export interface FileRoutesByTo {
-  "/": typeof RouteRoute;
-  "/experience": typeof ExperienceRoute;
-  "/resume": typeof ResumeRoute;
+  '/': typeof IndexRoute
+  '/experience': typeof ExperienceRoute
+  '/resume': typeof ResumeRoute
 }
 
 export interface FileRoutesById {
-  __root__: typeof rootRoute;
-  "/": typeof RouteRoute;
-  "/experience": typeof ExperienceRoute;
-  "/resume": typeof ResumeRoute;
+  __root__: typeof rootRoute
+  '/': typeof IndexRoute
+  '/experience': typeof ExperienceRoute
+  '/resume': typeof ResumeRoute
 }
 
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: "/" | "/experience" | "/resume";
-  fileRoutesByTo: FileRoutesByTo;
-  to: "/" | "/experience" | "/resume";
-  id: "__root__" | "/" | "/experience" | "/resume";
-  fileRoutesById: FileRoutesById;
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths: '/' | '/experience' | '/resume'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/experience' | '/resume'
+  id: '__root__' | '/' | '/experience' | '/resume'
+  fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  RouteRoute: typeof RouteRoute;
-  ExperienceRoute: typeof ExperienceRoute;
-  ResumeRoute: typeof ResumeRoute;
+  IndexRoute: typeof IndexRoute
+  ExperienceRoute: typeof ExperienceRoute
+  ResumeRoute: typeof ResumeRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  RouteRoute: RouteRoute,
+  IndexRoute: IndexRoute,
   ExperienceRoute: ExperienceRoute,
   ResumeRoute: ResumeRoute,
-};
+}
 
 export const routeTree = rootRoute
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>();
+  ._addFileTypes<FileRouteTypes>()
 
 /* ROUTE_MANIFEST_START
 {
@@ -121,7 +121,7 @@ export const routeTree = rootRoute
       ]
     },
     "/": {
-      "filePath": "route.tsx"
+      "filePath": "index.tsx"
     },
     "/experience": {
       "filePath": "experience.tsx"
