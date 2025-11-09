@@ -21,7 +21,7 @@
 }
 
 .topBarLink {
-  font-family: Noe Bold;
+  /* font-family: Noe Bold; */
   font-size: xx-large;
   text-decoration: none;
   color: var(--mantine-color-primary-0);

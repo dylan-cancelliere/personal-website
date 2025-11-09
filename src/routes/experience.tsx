@@ -64,7 +64,10 @@ const EventCard = ({ title, body, role, link, skills }: EventCardProps) => {
       }}
     >
       <Group gap={5}>
-        <Title order={3} ff="Noe Bold">
+        <Title
+          order={3}
+          // ff="Noe Bold"
+        >
           {title}
         </Title>
         {link && (
@@ -80,7 +83,10 @@ const EventCard = ({ title, body, role, link, skills }: EventCardProps) => {
         )}
       </Group>
       {role && (
-        <Text ff="Noe Italic" style={{ textIndent: 0 }}>
+        <Text
+          // ff="Noe Italic"
+          style={{ textIndent: 0 }}
+        >
           {role}
         </Text>
       )}
@@ -124,7 +130,11 @@ const MobileTimeLineEvent = ({ date, icon, cardProps }: TimelineEventProps) => {
   const theme = useMantineTheme();
 
   const dateWrapper = (
-    <Title order={2} ff="Noe Bold Italic" c={theme.colors.primary[0]}>
+    <Title
+      order={2}
+      // ff="Noe Bold Italic"
+      c={theme.colors.primary[0]}
+    >
       {date}
     </Title>
   );
@@ -165,7 +175,11 @@ const DesktopTimelineEvent = ({
   const theme = useMantineTheme();
 
   const dateWrapper = (
-    <Title order={2} ff="Noe Bold Italic" c={theme.colors.primary[0]}>
+    <Title
+      order={2}
+      // ff="Noe Bold Italic"
+      c={theme.colors.primary[0]}
+    >
       {date}
     </Title>
   );
