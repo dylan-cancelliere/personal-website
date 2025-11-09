@@ -47,11 +47,7 @@ const AboutContainer = () => {
             borderRadius: rem(5),
           }}
         >
-          <Title
-          // ff="Noe Bold Italic"
-          >
-            Hello!
-          </Title>
+          <Title ff="Noe Bold Italic">Hello!</Title>
           <Text style={{ textIndent: em(20) }}>
             I'm Dylan, a Software Engineer living in Rochester, New York.
             Currently, I'm working at{" "}
@@ -90,7 +86,7 @@ const SpotifyContainer = () => {
       <Group w="100%" justify="center" gap="xl">
         <Stack>
           <Title
-            // ff="Noe Bold Italic"
+            ff="Noe Bold Italic"
             c={theme.colors.primary[0]}
             style={{ textAlign: "right" }}
           >

@@ -5,7 +5,7 @@
   font-style: normal;
 }
 
-/* @font-face {
+@font-face {
   font-family: "Noe";
   src: url("/fonts/Noe/noe.ttf");
   font-weight: 500;
@@ -31,7 +31,7 @@
   src: url("/fonts/Noe/noe-bold-italic.ttf");
   font-weight: 700;
   font-style: italic;
-} */
+}
 
 body {
   scroll-behavior: smooth;
