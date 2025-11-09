@@ -15,6 +15,7 @@ import {
 import { useIsMobile } from "../utils";
 import { ReactNode, useContext } from "react";
 import { AppContext } from "../AppContext";
+import { SpotifyEmbed } from "../SpotifyEmbed";
 
 const InlineLink = ({
   children,
@@ -95,18 +96,7 @@ const SpotifyContainer = () => {
             ...follow me while you're here 👀
           </Text>
         </Stack>
-        <iframe
-          style={{
-            border: "none",
-            borderRadius: rem(5),
-            maxWidth: rem(700),
-            flexGrow: 1,
-          }}
-          src="https://open.spotify.com/embed/playlist/6U4twRNeuWDpzCs0zOvpLl?utm_source=generator"
-          height="352"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-        />
+        {/* <SpotifyEmbed src="https://open.spotify.com/embed/playlist/6U4twRNeuWDpzCs0zOvpLl?utm_source=generator" /> */}
       </Group>
     </Stack>
   );
