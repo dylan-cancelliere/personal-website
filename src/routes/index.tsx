@@ -1,6 +1,6 @@
 import classes from "./index.module.css";
 
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Box,
   em,
@@ -25,9 +25,9 @@ const InlineLink = ({
   link: string;
 }) => {
   return (
-    <a href={link} className={classes.inlineLink} style={{}}>
+    <Link href={link} className={classes.inlineLink} style={{}}>
       {children}
-    </a>
+    </Link>
   );
 };
 
@@ -51,7 +51,7 @@ const AboutContainer = () => {
           <Text style={{ textIndent: em(20) }}>
             I'm Dylan, a Software Engineer living in Rochester, New York.
             Currently, I'm working at{" "}
-            <InlineLink link="#experience">Bryx</InlineLink> as a front-end
+            <InlineLink link="/experience">Bryx</InlineLink> as a front-end
             software engineer.
           </Text>
           <Text style={{ textIndent: em(20) }}>
