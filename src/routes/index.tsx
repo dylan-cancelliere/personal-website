@@ -25,7 +25,7 @@ const InlineLink = ({
   link: string;
 }) => {
   return (
-    <Link href={link} className={classes.inlineLink} style={{}}>
+    <Link href={link} className={classes.inlineLink}>
       {children}
     </Link>
   );
