@@ -96,7 +96,7 @@ const SpotifyContainer = () => {
             ...follow me while you're here 👀
           </Text>
         </Stack>
-        <SpotifyEmbed src="https://open.spotify.com/embed/playlist/6U4twRNeuWDpzCs0zOvpLl?utm_source=generator" />
+        <SpotifyEmbed src="https://open.spotify.com/embed/playlist/6HCMfDAVEKV1ZlK5mbnL4P?utm_source=generator" />
       </Group>
     </Stack>
   );
